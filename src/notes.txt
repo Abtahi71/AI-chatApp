@@ -1,0 +1,30 @@
+graphql-->precise data fetching
+rest api-->overfetching,multiple endpoints
+
+npm i @apollo/server graphql graphql-tag
+
+
+type User{
+    id:ID!
+    name:String!
+    email:String!
+}
+
+type Query{
+    users:[User]
+    user(id:ID!):User
+}
+
+const resolver=()=>{
+    Query{
+        users:()=>users,
+        user:({id})=>users.find(u=>u.id===id)
+    }
+}
+
+
+type Mutatation{
+    createProduct(
+        title:String!
+    ):Product
+}
